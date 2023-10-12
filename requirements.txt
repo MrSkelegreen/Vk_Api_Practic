@@ -1,0 +1,10 @@
+Flask
+flask-restful
+psycopg
+vk-api==11.9.9
+python-dotenv
+
+
+
+
+

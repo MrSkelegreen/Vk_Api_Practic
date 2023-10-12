@@ -1,0 +1,32 @@
+version: '3.8'
+
+networks:
+  ttit-network:
+
+services:
+  web:
+    build: ./
+    env_file:
+      - ./.env
+    networks:
+      - ttit-network
+    ports:
+    - 5000:5000
+
+  postgres:
+    image: postgres:15
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: "nick"
+      POSTGRES_PASSWORD: "123"
+      POSTGRES_DB: "vk"
+      POSTGRES_HOST: "127.0.0.1"
+    networks:
+      - ttit-network
+    ports:
+    - '5432:5432'
+
+volumes:
+  postgres_data:
